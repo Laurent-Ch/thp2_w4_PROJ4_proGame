@@ -1,3 +1,5 @@
+import { rawgKey } from "../rawgKey";
+
 const PageDetail = (argument) => {
   const preparePage = () => {
     const cleanedArgument = argument.replace(/\s+/g, "-");
@@ -18,7 +20,7 @@ const PageDetail = (argument) => {
         });
     };
 
-    fetchGame('https://api.rawg.io/api/games', cleanedArgument);
+    fetchGame(`https://api.rawg.io/api/games?key=${rawgKey}`, cleanedArgument);
   };
 
   const render = () => {

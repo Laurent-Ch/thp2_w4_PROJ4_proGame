@@ -1,3 +1,4 @@
+import { rawgKey } from "../rawgKey";
 
 const PageList = (argument = '') => {
   const preparePage = () => {
@@ -16,7 +17,7 @@ const PageList = (argument = '') => {
     };
 
     const fetchList = (url, argument) => {
-      const finalURL = argument ? `${url}?search=${argument}` : url;
+      const finalURL = argument ? `${url}&search=${argument}` : url;
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
@@ -24,7 +25,7 @@ const PageList = (argument = '') => {
         });
     };
 
-    fetchList('https://api.rawg.io/api/games', cleanedArgument);
+    fetchList(`https://api.rawg.io/api/games?key=${rawgKey}`, cleanedArgument);
   };
 
   const render = () => {
