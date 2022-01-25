@@ -7,6 +7,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
+    "watch": "webpack --mode development --watch",
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production"
