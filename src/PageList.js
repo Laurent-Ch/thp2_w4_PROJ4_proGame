@@ -5,13 +5,12 @@ const PageList = (argument = '') => {
     const cleanedArgument = argument.replace(/\s+/g, "-");
 
     const displayResults = (articles) => {
-      const resultsContent = articles.map((article) => (
-        `<article class="cardGame">
-          <h1>${article.name}</h1>
-          <h2>${article.released}</h2>
-          <a href="#pagedetail/${article.id}">${article.id}</a>
-        </article>`
-      ));
+      const resultsContent = articles.map((article) => (`
+          <article class="cardGame">
+            <img class="cardIcon" src="${article.background_image}" alt="game-illustration" />  
+            <h1>${article.name}</h1>
+          </article>
+      `));
       const resultsContainer = document.querySelector(".page-list .articles");
       resultsContainer.innerHTML = resultsContent.join("\n");
     };

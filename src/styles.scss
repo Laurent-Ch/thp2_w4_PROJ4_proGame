@@ -1,6 +1,72 @@
-$primary-color: white;
-$bg: black;
-h1 {
+// Variables
+$primary-color: #FFF;
+$bg: #201c1c;
+
+// Maps
+$font-weights: (
+	"regular": 400,
+	"bold": 700
+);
+
+// Mixins
+@mixin flexCenter($direction) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: $direction;
+}
+
+// Functions
+@function weight($weight-name) {
+	@return map-get($font-weights, $weight-name);
+}
+
+
+// Main part
+body {
   color: $primary-color;
   background-color: $bg;
+}
+
+.top {
+  @include flexCenter(row);
+  justify-content: space-between;
+}
+
+.page-title {
+  text-transform: uppercase;
+  color: #D20A32;
+  font-family: 'Lato', sans-serif;
+}
+
+.searchbar {
+  border: 1px solid $primary-color;
+  color: $primary-color ;
+  background-color: $bg;
+  box-sizing: border-box;
+  border-radius: 20.5px;
+  -webkit-border-radius: 20.5px;
+  -moz-border-radius: 20.5px;
+  -ms-border-radius: 20.5px;
+  -o-border-radius: 20.5px;
+}
+
+.page-description {
+  text-align: justify;
+}
+
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cardGame {
+  margin-right: 20px;
+}
+
+.cardIcon {
+  
+  width: 300px;
+  height: 170px;
+  object-fit: cover;
 }

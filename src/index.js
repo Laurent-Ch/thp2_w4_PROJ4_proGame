@@ -1,4 +1,3 @@
-import "./styles.css";
 import "./styles.scss";
 
 import { routes } from './routes.js';
