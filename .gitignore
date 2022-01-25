@@ -1,0 +1,19 @@
+# API key(s)
+rawgKey.js
+
+.cache/
+coverage/
+dist/
+node_modules/
+.log
+
+# OS generated files
+.DS_Store
+.DSStore?
+
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+
