@@ -72,3 +72,7 @@ body {
   height: 170px;
   object-fit: cover;
 }
+
+.btn-show-more-container {
+  @include flexCenter(row);
+}
