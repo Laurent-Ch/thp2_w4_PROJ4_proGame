@@ -6,10 +6,18 @@ const PageList = (argument = '') => {
     const cleanedArgument = argument.replace(/\s+/g, "-");
     const displayResults = (articles, isShowMore) => {
     let arrayImg = ['' ,'<i class="fab fa-windows" style="font-size:30px"></i>', '<i class="fab fa-playstation" style="font-size:30px"></i>', '<i class="fab fa-xbox" style="font-size:30px"></i>', '<i class="fab fa-app-store-ios" style="font-size:30px"></i>', '<i class="fab fa-apple" style="font-size:30px"></i>', '<i class="fab fa-linux" style="font-size:30px"></i>', '<i class="fab fa-nintendo-switch" style="font-size:30px"></i>', '<i class="fab fa-android" style="font-size:30px"></i>'];
-
+    
     const resultsContent = articles.results.map((article) => (`
         <article class="cardGame">
-          <img class="cardIcon" src="${article.background_image}" alt="game-illustration" />  
+          <div class = "div-img">
+            <img class="cardIcon" src="${article.background_image}" alt="game-illustration" />
+            <div class='revealed-on-hover'>
+              <div>Released on: ${article.released}</div>  
+              <div>Rating: ${article.rating}</div>
+              <div>Rating count: ${article.ratings_count}</div>
+              <div>Genre: ${article.genres.map(genre => ` ${genre.name}`)}</div>
+            </div>  
+          </div>
           <h1 class="gameTitle">${article.name}</h1>
           <div>${article.parent_platforms.map(e => arrayImg[e.platform.id]).join(' ')}</div>
         </article>
