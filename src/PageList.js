@@ -12,10 +12,9 @@ const PageList = (argument = '') => {
           <div class = "div-img">
             <img class="cardIcon" src="${article.background_image}" alt="game-illustration" />
             <div class='revealed-on-hover'>
-              <div>Released on: ${article.released}</div>  
-              <div>Rating: ${article.rating}</div>
-              <div>Rating count: ${article.ratings_count}</div>
-              <div>Genre: ${article.genres.map(genre => ` ${genre.name}`)}</div>
+              <div class='hover-elt'>Released on: ${article.released}</div>  
+              <div class='hover-elt'>Rating: ${article.rating}, ${article.ratings_count} votes</div>
+              <div class='hover-elt'>Genre: ${article.genres.map(genre => ` ${genre.name}`)}</div>
             </div>  
           </div>
           <h1 class="gameTitle">${article.name}</h1>
