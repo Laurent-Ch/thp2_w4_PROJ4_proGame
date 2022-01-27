@@ -136,6 +136,18 @@ a.game-link:hover:after {
 
 .btn-show-more-container {
   @include flexCenter(row);
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.show-more-button {
+  color: $primary-color;
+  font-size: 1.2em;
+  background-color: $secundary-color;
+  width: 225px;
+  height: 50px;
+  border: none;
+
 }
 
 // PageDetail
