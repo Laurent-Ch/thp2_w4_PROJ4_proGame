@@ -44,7 +44,7 @@ const PageDetail = (argument) => {
       // Second additional info row.
       articleDOM.querySelector(".detail-genre").innerHTML = `
       <div><strong>Genres</strong></div>
-      <div>${genres.map(genre => `<a class="special-pagelist-link" href="#pagelist/genres/${genre.id}">${genre.name}</a>`).join(', ')}</div>`;
+      <div>${genres.map(genre => `<a class="special-pagelist-link" href="#pagelist/&genres=${genre.id}">${genre.name}</a>`).join(', ')}</div>`;
 
       articleDOM.querySelector(".detail-tags").innerHTML = `
       <div><strong>Tags</strong></div>
