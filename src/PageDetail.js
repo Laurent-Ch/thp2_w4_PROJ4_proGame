@@ -24,24 +24,30 @@ const PageDetail = (argument) => {
 
       articleDOM.querySelector(".detail-developers").innerHTML = `
       <div><strong>Developers</strong></div>
-      <div>${developers.map(developer => developer.name).join(' ')}</div>`;
+      <div>${developers.map(developer => developer.name).join(', ')}</div>`;
 
       articleDOM.querySelector(".detail-platforms").innerHTML = `
       <div><strong>Platforms</strong></div>
-      <div>${parent_platforms.map(platformObj => platformObj.platform.name).join(' ')}`;
+      <div>${parent_platforms.map(platformObj => platformObj.platform.name).join(', ')}`;
 
       articleDOM.querySelector(".detail-publishers").innerHTML = `
       <div><strong>Publishers</strong></div>
-      <div>${publishers.map(publisher => publisher.name).join(' ')}`;
+      <div>${publishers.map(publisher => publisher.name).join(', ')}`;
 
       // Second additional info row.
       articleDOM.querySelector(".detail-genre").innerHTML = `
       <div><strong>Genres</strong></div>
-      <div>${genres.map(genre => genre.name).join(' ')}</div>`;
+      <div>${genres.map(genre => genre.name).join(', ')}</div>`;
 
       articleDOM.querySelector(".detail-tags").innerHTML = `
       <div><strong>Tags</strong></div>
-      <div>${tags.map(tag => tag.name).join(' ')}</div>`;
+      <div>${tags.map(tag => tag.name).join(', ')}</div>`;
+
+      // Screenshots.
+      articleDOM.querySelector(".detail-tags").innerHTML = `
+      <div><strong>Tags</strong></div>
+      <div>${tags.map(tag => tag.name).join(', ')}</div>`;
+
     };
 
     const fetchGame = (url, argument) => {
@@ -77,6 +83,9 @@ const PageDetail = (argument) => {
         </div>
         </div>
       </section>
+      <h2 class="main-title">Screenshots
+      </h2>
+      <div class="screenshots-container></div>
     `;
 
     preparePage();

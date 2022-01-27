@@ -2,6 +2,7 @@
 $primary-color: #FFF;
 $secundary-color: #D20A32;
 $bg: #201c1c;
+$main-width: 1000px;
 
 // Maps
 $font-weights: (
@@ -23,18 +24,12 @@ $font-weights: (
 }
 
 // Other
-.visible {
-  display: block;
-}
-
-.hidden {
-  display: none;
-}
 
 // Main part
 body {
   color: $primary-color;
   background-color: $bg;
+  font-family: 'Lato', sans-serif;
 }
 
 .top {
@@ -42,10 +37,9 @@ body {
   justify-content: space-between;
 }
 
-.page-title {
+.main-title {
   text-transform: uppercase;
   color: $secundary-color;
-  font-family: 'Lato', sans-serif;
 }
 
 .searchbar {
@@ -64,6 +58,12 @@ body {
   text-align: justify;
 }
 
+
+.footer-bar {
+  background-color: $secundary-color;
+  height: 1px;
+  border: none;
+}
 
 // PageList
 .articles {
@@ -160,3 +160,4 @@ a.game-link:hover:after {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+
