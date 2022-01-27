@@ -1,8 +1,9 @@
 import { rawgKey } from "../rawgKey";
 
+// The search is done by id, not by name. Makes things way simpler.
 const PageDetail = (argument) => {
+  let baseAddress = 'https://api.rawg.io/api/games'; 
   const preparePage = () => {
-    const cleanedArgument = argument.replace(/\s+/g, "-");
 
     const displayGame = (gameData) => {
       const { name, released, description } = gameData;
@@ -13,14 +14,14 @@ const PageDetail = (argument) => {
     };
 
     const fetchGame = (url, argument) => {
-      fetch(`${url}/${argument}`)
+      fetch(`${url}/${argument}?key=${rawgKey}`)
         .then((response) => response.json())
         .then((responseData) => {
           displayGame(responseData);
         });
     };
 
-    fetchGame(`https://api.rawg.io/api/games?key=${rawgKey}`, cleanedArgument);
+    fetchGame(`${baseAddress}`, argument);
   };
 
   const render = () => {

@@ -105,6 +105,32 @@ body {
   margin-left: 15px;
 }
 
+a.game-link {
+  color: $primary-color;
+  text-decoration: none;
+  position: relative;
+
+  &:after {
+    //Compulsory
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: $primary-color;
+    left: 0px;
+    bottom: -3px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+}
+
+a.game-link:hover:after {
+  width: 100%;
+}
+
 .btn-show-more-container {
   @include flexCenter(row);
 }

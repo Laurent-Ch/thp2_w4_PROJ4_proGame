@@ -2,6 +2,8 @@ import { rawgKey } from "../rawgKey";
 
 const PageList = () => {
   let searchTerm;
+  let userSearched = false;
+  let baseAddress = 'https://api.rawg.io/api/games'; 
   let numberOfLoadedPages = 1;
   let resultsContainer;
 
@@ -18,7 +20,7 @@ const PageList = () => {
               <div class='hover-elt'>Genre: ${article.genres.map(genre => ` ${genre.name}`)}</div>
             </div>  
           </div>
-          <h1 class="gameTitle">${article.name}</h1>
+          <h1 class="gameTitle"><a class="game-link" href="#pagedetail/${article.id}">${article.name}</a></h1>
           <div>${article.parent_platforms.map(e => arrayImg[e.platform.id]).join(' ')}</div>
         </article>
     `));
@@ -44,17 +46,20 @@ const PageList = () => {
 
     // Recovering the user search and transfering it when necessary
     let searchBar = document.querySelector('.searchbar');
+    const btnShowMoreTotallyDifferent = document.querySelector('.show-more-button');
     searchBar.addEventListener('keypress', e => {
       if (e.key == 'Enter') {
+        userSearched = true;
         e.preventDefault();
+        btnShowMoreTotallyDifferent.style.display='block';
         numberOfLoadedPages = 1;
         resultsContainer.innerHTML = '';
         searchTerm = searchBar.value.trim().replace(/\s+/g, "-");
-        fetchList(`https://api.rawg.io/api/games?key=${rawgKey}&page_size=9`, searchTerm);
+        fetchList(`${baseAddress}?key=${rawgKey}&page_size=9`, searchTerm);
       }
     });
   
-    fetchList(`https://api.rawg.io/api/games?key=${rawgKey}&page_size=9`);
+    fetchList(`${baseAddress}?key=${rawgKey}&dates=2021-06-01,2022-06-01&ordering=-added&page_size=9`);
   };
 
   const handleShowBtn = () => {
@@ -64,7 +69,13 @@ const PageList = () => {
       if(numberOfLoadedPages >= 3 ){
         btnShowMore.style.display='none';
       }
-      fetchList(`https://api.rawg.io/api/games?key=${rawgKey}&page_size=9&page=${numberOfLoadedPages}`, searchTerm, true);
+      if (userSearched == true ) {
+        fetchList(`${baseAddress}?key=${rawgKey}&page_size=9&page=${numberOfLoadedPages}`, searchTerm, true);
+        
+      }
+      else {
+      fetchList(`${baseAddress}?key=${rawgKey}&dates=2021-06-01,2022-06-01&ordering=-added&page_size=9&page=${numberOfLoadedPages}`, searchTerm, true);
+      }
     });
   }
 
