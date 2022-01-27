@@ -1,9 +1,10 @@
 import { rawgKey } from "../rawgKey";
 
-const PageList = () => {
+const PageList = (argument) => {
+  // let complement = argument; 
   let searchTerm;
   let userSearched = false;
-  let baseAddress = 'https://api.rawg.io/api/games'; 
+  let baseAddress = 'https://api.rawg.io/api/'; 
   let numberOfLoadedPages = 1;
   let resultsContainer;
 
@@ -33,7 +34,7 @@ const PageList = () => {
   };
 
   const fetchList = (url, argument, isShowMore = false) => {
-    const finalURL = argument ? `${url}&search=${argument}` : url;
+    const finalURL = argument ? `${url}${argument}` : url;
     fetch(finalURL)
       .then((response) => response.json())
       .then((responseData) => {
@@ -55,11 +56,12 @@ const PageList = () => {
         numberOfLoadedPages = 1;
         resultsContainer.innerHTML = '';
         searchTerm = searchBar.value.trim().replace(/\s+/g, "-");
-        fetchList(`${baseAddress}?key=${rawgKey}&page_size=9`, searchTerm);
+        fetchList(`${baseAddress}games?key=${rawgKey}&page_size=9&search=`, searchTerm);
       }
     });
   
-    fetchList(`${baseAddress}?key=${rawgKey}&dates=2021-06-01,2022-06-01&ordering=-added&page_size=9`);
+    fetchList(baseAddress, argument);
+    // games?key=${rawgKey}&dates=2021-06-01,2022-06-01&ordering=-added&page_size=9`);
   };
 
   const handleShowBtn = () => {
@@ -70,11 +72,11 @@ const PageList = () => {
         btnShowMore.style.display='none';
       }
       if (userSearched == true ) {
-        fetchList(`${baseAddress}?key=${rawgKey}&page_size=9&page=${numberOfLoadedPages}`, searchTerm, true);
+        fetchList(`${baseAddress}games?key=${rawgKey}&page_size=9&page=${numberOfLoadedPages}&search=`, searchTerm, true);
         
       }
       else {
-      fetchList(`${baseAddress}?key=${rawgKey}&dates=2021-06-01,2022-06-01&ordering=-added&page_size=9&page=${numberOfLoadedPages}`, searchTerm, true);
+      fetchList(`${baseAddress}games?key=${rawgKey}&dates=2021-06-01,2022-06-01&ordering=-added&page_size=9&page=${numberOfLoadedPages}`, searchTerm, true);
       }
     });
   }

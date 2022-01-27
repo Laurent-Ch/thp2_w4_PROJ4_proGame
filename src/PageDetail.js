@@ -2,10 +2,13 @@ import { rawgKey } from "../rawgKey";
 
 // The search is done by id, not by name. Makes things way simpler.
 const PageDetail = (argument) => {
+  // const cleanedArgument = argument.trim().replace(/\s+/g, '-');
+
   let intro = document.querySelector('#mainpage-pitch');
   intro.innerHTML = '';
   
   let baseAddress = 'https://api.rawg.io/api/games'; 
+  let baseSendingAddress = 'https://api.rawg.io/api/'; 
   const preparePage = () => {
 
     const displayGame = (gameData) => {
@@ -15,7 +18,7 @@ const PageDetail = (argument) => {
       articleDOM.querySelector(".detail-image").src = background_image;
       
       articleDOM.querySelector(".website-button").innerHTML = `
-      <a class="website-link" href='${website}'>Check Website</a>`;
+      <a class="website-link" href='${website}'>Check Website <i class="fas fa-play play-icon"></i></a>`;
       
       articleDOM.querySelector("h1.title").innerHTML = name;
       articleDOM.querySelector(".detail-rating").innerHTML = `${rating}/5 - ${ratings_count} votes`;
@@ -41,7 +44,7 @@ const PageDetail = (argument) => {
       // Second additional info row.
       articleDOM.querySelector(".detail-genre").innerHTML = `
       <div><strong>Genres</strong></div>
-      <div>${genres.map(genre => genre.name).join(', ')}</div>`;
+      <div>${genres.map(genre => `<a class="special-pagelist-link" href="#pagelist/genres/${genre.id}">${genre.name}</a>`).join(', ')}</div>`;
 
       articleDOM.querySelector(".detail-tags").innerHTML = `
       <div><strong>Tags</strong></div>
@@ -100,6 +103,3 @@ const PageDetail = (argument) => {
 };
 
 export { PageDetail };
-
-// articleDOM.querySelector("p.release-date span").innerHTML = released;
-// <p class="release-date">Release date : <span></span></p>

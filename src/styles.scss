@@ -163,6 +163,10 @@ a.game-link:hover:after {
   @include button-type1();
 }
 
+.play-icon {
+  margin-left: 50px;
+}
+
 // PageDetail
 .detail-image {
   width: calc(100% + 40px);
@@ -190,6 +194,10 @@ a.game-link:hover:after {
 
 .detail-rating {
   color: $secundary-color;
+}
+
+.special-pagelist-link {
+  @include anchor-type1();
 }
 
 .detail-info1, .detail-info2 {
