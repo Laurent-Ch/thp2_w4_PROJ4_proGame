@@ -154,7 +154,9 @@ a.game-link:hover:after {
   color: $secundary-color;
 }
 
-.detail-info1 {
+.detail-info1, .detail-info2 {
   display: flex;
   justify-content: space-between;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
