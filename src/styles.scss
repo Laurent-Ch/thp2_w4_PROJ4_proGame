@@ -3,6 +3,7 @@ $primary-color: #FFF;
 $secundary-color: #D20A32;
 $bg: #201c1c;
 $main-width: 1000px;
+$base-margin: 15px;
 
 // Maps
 $font-weights: (
@@ -18,18 +19,37 @@ $font-weights: (
 	flex-direction: $direction;
 }
 
+@mixin button-type1() {
+  color: $primary-color;
+  font-size: 1.2em;
+  background-color: $secundary-color;
+  width: 225px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin anchor-type1() {
+  color: $primary-color;
+  text-decoration: none!important;
+}
+
 // Functions
 @function weight($weight-name) {
 	@return map-get($font-weights, $weight-name);
 }
 
 // Other
+a, a:visited, a:hover, a:active {
+  color: inherit;
+}
 
 // Main part
 body {
   color: $primary-color;
   background-color: $bg;
   font-family: 'Lato', sans-serif;
+  padding: 0 15px;
 }
 
 .top {
@@ -56,8 +76,8 @@ body {
 
 .page-description {
   text-align: justify;
+  margin-bottom: 50px;
 }
-
 
 .footer-bar {
   background-color: $secundary-color;
@@ -109,8 +129,7 @@ body {
 }
 
 a.game-link {
-  color: $primary-color;
-  text-decoration: none;
+  @include anchor-type1();
   position: relative;
 
   &:after {
@@ -141,20 +160,27 @@ a.game-link:hover:after {
 }
 
 .show-more-button {
-  color: $primary-color;
-  font-size: 1.2em;
-  background-color: $secundary-color;
-  width: 225px;
-  height: 50px;
-  border: none;
-
+  @include button-type1();
 }
 
 // PageDetail
 .detail-image {
-  width: 100%;
+  width: calc(100% + 40px);
+  margin-left: -20px;
   height: 575px;
   object-fit: cover;
+  position: relative;
+}
+
+.website-button {
+  position: absolute;
+  @include button-type1();
+  right: 50px;
+  bottom: 130px;
+}
+
+.website-link {
+  @include anchor-type1();
 }
 
 .detail-top {

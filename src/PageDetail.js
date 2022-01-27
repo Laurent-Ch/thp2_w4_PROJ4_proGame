@@ -9,10 +9,14 @@ const PageDetail = (argument) => {
   const preparePage = () => {
 
     const displayGame = (gameData) => {
-      const { background_image, name, rating, ratings_count, description, released, developers, parent_platforms, publishers, genres, tags } = gameData;
+      const { background_image, website, name, rating, ratings_count, description, released, developers, parent_platforms, publishers, genres, tags } = gameData;
       const articleDOM = document.querySelector(".page-detail .article");
       // Top part.
       articleDOM.querySelector(".detail-image").src = background_image;
+      
+      articleDOM.querySelector(".website-button").innerHTML = `
+      <a class="website-link" href='${website}'>Check Website</a>`;
+      
       articleDOM.querySelector("h1.title").innerHTML = name;
       articleDOM.querySelector(".detail-rating").innerHTML = `${rating}/5 - ${ratings_count} votes`;
       articleDOM.querySelector("p.description").innerHTML = description;
@@ -66,6 +70,7 @@ const PageDetail = (argument) => {
       <section class="page-detail">
         <div class="article">
           <img class="detail-image" src"" alt="game-image"/>
+          <button type='button' class='website-button'></button>
           <div class=detail-top>
             <h1 class="title"></h1>
             <div class="detail-rating"></div>
