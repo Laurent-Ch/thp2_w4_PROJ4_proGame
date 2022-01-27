@@ -1,7 +1,6 @@
 import { rawgKey } from "../rawgKey";
 
-const PageList = (argument) => {
-  // let complement = argument; 
+const PageList = (argument, argumentPt2) => {
   let searchTerm;
   let userSearched = false;
   let baseAddress = 'https://api.rawg.io/api/'; 
@@ -34,7 +33,7 @@ const PageList = (argument) => {
   };
 
   const fetchList = (url, argument, isShowMore = false) => {
-    const finalURL = argument ? `${url}${argument}` : url;
+    const finalURL = argument ? `${url}${argument}/${argumentPt2}?key=${rawgKey}` : url;
     fetch(finalURL)
       .then((response) => response.json())
       .then((responseData) => {
