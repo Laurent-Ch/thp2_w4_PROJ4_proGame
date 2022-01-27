@@ -1,6 +1,5 @@
 import "./styles.scss";
 import { routes } from './routes.js';
-console.log("hello world!");
 
 const setRoute = () => {
   const path = window.location.hash.substring(1).split('/');

@@ -1,5 +1,6 @@
 // Variables
 $primary-color: #FFF;
+$secundary-color: #D20A32;
 $bg: #201c1c;
 
 // Maps
@@ -43,7 +44,7 @@ body {
 
 .page-title {
   text-transform: uppercase;
-  color: #D20A32;
+  color: $secundary-color;
   font-family: 'Lato', sans-serif;
 }
 
@@ -140,6 +141,20 @@ a.game-link:hover:after {
 // PageDetail
 .detail-image {
   width: 100%;
-  height: 500px;
+  height: 575px;
   object-fit: cover;
+}
+
+.detail-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-rating {
+  color: $secundary-color;
+}
+
+.detail-info1 {
+  display: flex;
+  justify-content: space-between;
 }
