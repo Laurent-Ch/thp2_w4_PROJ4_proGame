@@ -9,7 +9,6 @@ const Home = (argument = '') => {
   `;
 
   let default_arg = `&dates=2021-06-01,2022-06-01&ordering=-added`;
-
   PageList(default_arg);
 };
 

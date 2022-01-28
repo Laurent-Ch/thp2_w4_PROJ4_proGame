@@ -6,10 +6,11 @@ const PageDetail = (argument) => {
 
   let intro = document.querySelector('#mainpage-pitch');
   intro.innerHTML = '';
-  
   let baseAddress = 'https://api.rawg.io/api/games'; 
-  let baseSendingAddress = 'https://api.rawg.io/api/'; 
   const preparePage = () => {
+
+    // Issues
+    // <div>${parent_platforms.map(elt => `<a class="special-pagelist-link" href="#pagelist/&platforms=${elt.platform.id}">${elt.platform.name}</a>`).join(', ')}</div>`;
 
     const displayGame = (gameData) => {
       const { background_image, website, name, rating, ratings_count, description, released, developers, parent_platforms, publishers, genres, tags } = gameData;
@@ -31,15 +32,15 @@ const PageDetail = (argument) => {
 
       articleDOM.querySelector(".detail-developers").innerHTML = `
       <div><strong>Developers</strong></div>
-      <div>${developers.map(developer => developer.name).join(', ')}</div>`;
-
+      <div>${developers.map(developer => `<a class="special-pagelist-link" href="#pagelist/&developers=${developer.id}">${developer.name}</a>`).join(', ')}</div>`;
+      
       articleDOM.querySelector(".detail-platforms").innerHTML = `
       <div><strong>Platforms</strong></div>
-      <div>${parent_platforms.map(platformObj => platformObj.platform.name).join(', ')}`;
-
+      <div>${parent_platforms.map(elt => `<a class="special-pagelist-link" href="#pagelist/&parent_platforms=${elt.platform.id}">${elt.platform.name}</a>`).join(', ')}</div>`;
+      
       articleDOM.querySelector(".detail-publishers").innerHTML = `
       <div><strong>Publishers</strong></div>
-      <div>${publishers.map(publisher => publisher.name).join(', ')}`;
+      <div>${publishers.map(publisher => `<a class="special-pagelist-link" href="#pagelist/&publishers=${publisher.id}">${publisher.name}</a>`).join(', ')}</div>`;
 
       // Second additional info row.
       articleDOM.querySelector(".detail-genre").innerHTML = `
@@ -48,13 +49,9 @@ const PageDetail = (argument) => {
 
       articleDOM.querySelector(".detail-tags").innerHTML = `
       <div><strong>Tags</strong></div>
-      <div>${tags.map(tag => tag.name).join(', ')}</div>`;
+      <div>${tags.map(tag => `<a class="special-pagelist-link" href="#pagelist/&tags=${tag.id}">${tag.name}</a>`).join(', ')}</div>`;
 
       // Screenshots.
-      articleDOM.querySelector(".detail-tags").innerHTML = `
-      <div><strong>Tags</strong></div>
-      <div>${tags.map(tag => tag.name).join(', ')}</div>`;
-
     };
 
     const fetchGame = (url, argument) => {
